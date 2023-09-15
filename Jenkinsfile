@@ -1,13 +1,9 @@
 pipeline {
-    agent any
-    tools {
-        maven 'Maven'
-    }
     stages {
-        stage('Build Maven'){
+        stage('Docker Login'){
             steps{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Abhinandan14/Docker.git']])
-                sh 'mvn clean install'
+                sh 'docker login -u abhinandan7 -p cbnits@1234'
             }
         }
     
